@@ -1,9 +1,9 @@
-import { Product } from '@/types'
+import { ProductInCart } from '@/types'
 import Image from 'next/image'
 import React from 'react'
 import CartProductAction from './CartAction'
 type CartProductProps = {
-    product: Product
+    product: ProductInCart
 }
 const CartProduct = ({ product }: CartProductProps) => {
     
