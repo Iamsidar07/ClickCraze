@@ -20,8 +20,8 @@ const syne = Syne({
 })
 
 export const metadata: Metadata = {
-  title: 'ClickCraze | Ecommerce app',
-  description: 'Ecommerce app',
+  title: 'ClickCraze - All product in one place | E-commerce app',
+  description: 'Best place to shop all products in one place.',
   other: {
     "theme-color": "white",
     "color-scheme": "light only",

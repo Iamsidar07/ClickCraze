@@ -1,83 +1,92 @@
 
+import { Product, ProductInCart } from '@/types';
 import create from 'zustand';
+import { devtools } from "zustand/middleware"
+interface UseCartProps {
+    currentAppliedFilters: string[],
+    products: Product[],
+    cart: ProductInCart[],
+    isOpenModel: false,
+    setcurrentAppliedFilters: (currentFilters: string[]) => void;
+    setProducts: (products: Product[]) => void;
+    setIsOpenModel: () => void;
+    addItemToCart: (item: Product) => void;
+    removeItemFromCart: (itemId: string) => void;
+    clearCart: () => void;
+    decreaseQuantity: (itemId: string) => void;
+}
+const useCart = create<UseCartProps>(
+    devtools(
+        (set) => ({
+            currentAppliedFilters: [],
+            products: [],
+            cart: [],
+            isOpenModel: false,
 
-const useCart = create(
-    (set, get) => ({
-        currentAppliedFilters: [],
-        products: [],
-        cart: [],
-        product: {},
-        isOpenModel: false,
+            setcurrentAppliedFilters: (currentFilters: string[]) => {
+                set((state: any) => ({
+                    ...state,
+                    currentAppliedFilters: currentFilters,
+                }))
+            },
 
-        setcurrentAppliedFilters: (currentFilters) => {
-            set((state) => ({
-                ...state,
-                currentAppliedFilters: currentFilters,
-            }))
-        },
+            setProducts: (products: any) => {
+                set((state: any) => ({
+                    ...state,
+                    products
+                }))
+            },
 
-        setProducts: (products) => {
-            set((state) => ({
-                ...state,
-                products
-            }))
-        },
-        
-        setIsOpenModel: () => {
-            set(state => ({
-                ...state,
-                isOpenModel: !state.isOpenModel
-            }))
-        },
-        addItemToCart: (item) => {
-            set(state => {
-                const newItem = state.cart.find(product => product._id === item._id);
-                if (newItem) {
-                    newItem.quantity = newItem.quantity + 1;
+            setIsOpenModel: () => {
+                set((state: any) => ({
+                    ...state,
+                    isOpenModel: !state.isOpenModel
+                }))
+            },
+            addItemToCart: (item: any) => {
+                set((state: any) => {
+                    const newItem = state.cart.find((product: any) => product._id === item._id);
+                    if (newItem) {
+                        newItem.quantity = newItem.quantity + 1;
+                        return ({
+                            ...state,
+                            cart: [...state.cart]
+                        })
+                    }
                     return ({
                         ...state,
-                        cart: [...state.cart]
+                        cart: [...state.cart, { ...item, quantity: 1 }]
                     })
-                }
-                return ({
-                    ...state,
-                    cart: [...state.cart, { ...item, quantity: 1 }]
                 })
-            })
-        },
-        removeItemFromCart: (itemId) => {
-            set(state => ({
-                ...state,
-                cart: state.cart.filter(product => product._id !== itemId)
-            }))
-        },
-        clearCart: () => {
-            set(state => ({
-                ...state,
-                cart: []
-            }))
-        },
-        setProduct: (product) => {
-            set(state => ({
-                ...state,
-                product: product
-            }))
-        },
-        decreaseQuantity: (itemId) => {
-            set(state => {
+            },
+            removeItemFromCart: (itemId: any) => {
+                set((state: any) => ({
+                    ...state,
+                    cart: state.cart.filter((product: any) => product._id !== itemId)
+                }))
+            },
+            clearCart: () => {
+                set(state => ({
+                    ...state,
+                    cart: []
+                }))
+            },
+            decreaseQuantity: (itemId) => {
+                set(state => {
 
-                return ({
-                    ...state,
-                    cart: state.cart.map(product => {
-                        if (product._id === itemId && product.quantity > 1) {
-                            product.quantity = product.quantity - 1;
-                        }
-                        return product;
+                    return ({
+                        ...state,
+                        cart: state.cart.map(product => {
+                            if (product._id === itemId && product.quantity > 1) {
+                                product.quantity = product.quantity - 1;
+                            }
+                            return product;
+                        })
                     })
                 })
-            })
-        },
-    }),
+            },
+        })
+    )
 )
 
 export default useCart;
