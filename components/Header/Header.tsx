@@ -18,7 +18,7 @@ const Header = () => {
                 <SearchBar />
                 <div className='flex items-center gap-3'>
                     {
-                        !userId ? (<Link href={'/sign-in'}>
+                        !userId ? (<Link href={'/signIn'}>
                             <div className='flex items-center gap-2 border-r border-r-gray-300 pr-3 cursor-pointer'>
                                 <AiOutlineUser size={25} className='text-blue-500' />
                                 <p className='font-base'>Sign Up/Sign in</p>
