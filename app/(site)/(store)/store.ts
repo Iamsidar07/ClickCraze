@@ -1,7 +1,7 @@
 
 import { Product, ProductInCart } from '@/types';
 import create from 'zustand';
-import { devtools } from "zustand/middleware"
+import { devtools, persist } from "zustand/middleware"
 interface UseCartProps {
     currentAppliedFilters: string[],
     products: Product[],
@@ -23,15 +23,15 @@ const useCart = create<UseCartProps>(
             cart: [],
             isOpenModel: false,
 
-            setcurrentAppliedFilters: (currentFilters: string[]) => {
-                set((state: any) => ({
+            setcurrentAppliedFilters: (currentFilters) => {
+                set((state) => ({
                     ...state,
                     currentAppliedFilters: currentFilters,
                 }))
             },
 
-            setProducts: (products: any) => {
-                set((state: any) => ({
+            setProducts: (products) => {
+                set((state) => ({
                     ...state,
                     products
                 }))
@@ -43,9 +43,9 @@ const useCart = create<UseCartProps>(
                     isOpenModel: !state.isOpenModel
                 }))
             },
-            addItemToCart: (item: any) => {
-                set((state: any) => {
-                    const newItem = state.cart.find((product: any) => product._id === item._id);
+            addItemToCart: (item) => {
+                set((state) => {
+                    const newItem = state.cart.find((product) => product._id === item._id);
                     if (newItem) {
                         newItem.quantity = newItem.quantity + 1;
                         return ({
@@ -59,10 +59,10 @@ const useCart = create<UseCartProps>(
                     })
                 })
             },
-            removeItemFromCart: (itemId: any) => {
-                set((state: any) => ({
+            removeItemFromCart: (itemId) => {
+                set((state) => ({
                     ...state,
-                    cart: state.cart.filter((product: any) => product._id !== itemId)
+                    cart: state.cart.filter((product) => product._id !== itemId)
                 }))
             },
             clearCart: () => {
@@ -84,8 +84,10 @@ const useCart = create<UseCartProps>(
                         })
                     })
                 })
-            },
-        })
+            }
+        }),
+
+
     )
 )
 
