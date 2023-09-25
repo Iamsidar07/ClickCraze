@@ -1,10 +1,10 @@
 'use client'
 
 import useCart from "@/app/(site)/(store)/store"
-import { Product } from "@/types"
+import { Product, ProductInCart } from "@/types"
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
 type CartProductActionProps = {
-    product: Product
+    product: ProductInCart
 }
 function CartProductAction({ product }: CartProductActionProps) {
     const { addItemToCart, decreaseQuantity, removeItemFromCart } = useCart(state => ({
@@ -18,12 +18,12 @@ function CartProductAction({ product }: CartProductActionProps) {
                 <AiOutlinePlus size={20} />
             </button>
             <button className='w-8 h-8 grid place-content-center border px-2'>
-                {product?.quantity}
+                {product.quantity}
             </button>
-            <button className='w-8 h-8 grid place-content-center border rounded-r cursor-pointer p-2' onClick={() => decreaseQuantity(product.id)}>
+            <button className='w-8 h-8 grid place-content-center border rounded-r cursor-pointer p-2' onClick={() => decreaseQuantity(product._id)}>
                 <AiOutlineMinus size={20} />
             </button>
-            <button className='w-8 h-8 grid place-content-center border rounded-r cursor-pointer p-2' onClick={() => removeItemFromCart(product.id)}>
+            <button className='w-8 h-8 grid place-content-center border rounded-r cursor-pointer p-2' onClick={() => removeItemFromCart(product._id)}>
                 <AiOutlineDelete size={20} />
             </button>
         </div>
