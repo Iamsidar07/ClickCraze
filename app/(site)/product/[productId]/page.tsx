@@ -36,7 +36,7 @@ const ProductInfoPage = async ({ params }: ProductInfoPageProps) => {
   return (
     <main className="p-3 sm:p-8 max-w-[1600px] mx-auto min-h-screen">
       <ProductInfoCard product={product} />
-      <h1 className="mt-12 sm:mt-24 font-semibold">Related Products</h1>
+      <h1 className="my-12 font-bold text-2xl sm:text-4xl">Related Products</h1>
       {relatedProducts.length === 0 ? (
         <p>No any related products</p>
       ) : (

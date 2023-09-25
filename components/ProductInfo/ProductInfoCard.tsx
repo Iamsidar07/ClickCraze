@@ -40,7 +40,6 @@ const ProductInfoCard = ({ product }: ProductInfoCardProps) => {
                 <div>
                 </div>
             </div>
-
         </div>
     )
 }
