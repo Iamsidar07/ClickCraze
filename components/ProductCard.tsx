@@ -16,9 +16,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <div className='border rounded-2xl duration-200 transition-all ease-linear group hover:border-blue-500 hover:shadow-[7px_7px] hover:-translate-x-1 hover:-translate-y-1 z-20 bg-white max-w-sm'>
             <Link href={`/product/${product._id}`}>
-                <div className='p-2'>
-                    <div className='relative w-44 h-60 bg-white mx-auto max-w-[290px] p-4'>
-                        <Image src={product.image} alt={product.title} fill className='absolute object-contain' />
+                <div className='w-full pt-1 rounded-t-2xl'>
+                    <div className='relative w-full h-60 mx-auto p-2'>
+                        <Image src={product.image} alt={product.title} fill className='absolute object-cover w-full h-full aspect-square rounded-t-2xl' />
                     </div>
                 </div>
             </Link>

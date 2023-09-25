@@ -16,7 +16,7 @@ const ProductInfoCard = ({ product }: ProductInfoCardProps) => {
     return (
         <div className='grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6 mt-12 sm:mt-24'>
             <div className='relative  w-full h-72 sm:h-full sm:max-h-[75%] mx-auto'>
-                <Image src={product.image} alt={product.title} fill className='absolute object-contain' />
+                <Image src={product.image} alt={product.title} fill className='absolute object-cover aspect-square' />
             </div>
             <div className='flex flex-col gap-2 p-4'>
                 <h1 className='text-2xl sm:text-4xl font-bold'>{product.title}</h1>
