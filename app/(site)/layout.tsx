@@ -25,12 +25,12 @@ export const metadata: Metadata = {
   other: {
     "theme-color": "white",
     "color-scheme": "light only",
-    "twitter:image": "/icon.png",
+    "twitter:image": "https://click-craze.vercel.app/icon.png",
     "twitter:card": "summary_large_image",
-    "og:image": "/icon.png",
+    "og:image": "https://click-craze.vercel.app/icon.png",
     "og:type": "website",
     "og:site_name": "ClickCraze",
-    "og:url":""
+    "og:url":"https://click-craze.vercel.app/"
   }
 }
 

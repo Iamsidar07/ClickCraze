@@ -1,7 +1,7 @@
 'use client'
 
 import useCart from "@/app/(site)/(store)/store"
-import { Product, ProductInCart } from "@/types"
+import { ProductInCart } from "@/types"
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai"
 type CartProductActionProps = {
     product: ProductInCart

@@ -9,7 +9,7 @@ ClickCraze is an fullstack ecommerce plateform built in NEXTJS, tailwindcss and 
 - [Installation](#installation)
 
 ## Live Demo
-You can visit at [ClickCraze](https://) to see live demo of the app
+You can visit at [ClickCraze](https://click-craze.vercel.app/) to see live demo of the app
 ## GMATRIX 
 ![gmatriz](gmatrix url)
 ## Tech Stacks
