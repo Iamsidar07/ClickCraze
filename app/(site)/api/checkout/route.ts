@@ -15,8 +15,8 @@ export async function POST(requet: NextRequest) {
         const checkoutSession: Stripe.Checkout.Session = await stripe.checkout.sessions.create({
             mode: 'payment',
             line_items,
-            success_url: `http://localhost:3000/checkout?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `http://localhost:3000/cancel`,
+            success_url: `https://click-craze.vercel.app/checkout?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `https://click-craze.vercel.app/cancel`,
             invoice_creation: {
                 enabled: true
             },
